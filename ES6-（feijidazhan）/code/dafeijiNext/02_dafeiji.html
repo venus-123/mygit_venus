@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/dafeiji.css" />
+		
+		<script src="js/base.js"></script>
+		<script src="js/common.min.js"></script>
+		<script src="js/gameEngine.min.js"></script>
+		<script src="js/myPlane.min.js"></script>
+		<script src="js/bullet.min.js"></script>
+		<script src="js/enemy.min.js"></script>
+		<script src="js/ajax.js"></script>
+		
+		<script>
+			onload = function(){
+				
+				//打飞机游戏
+				//游戏引擎： 对象
+				//我的飞机： 对象
+				//子弹： 构造函数
+				//敌机： 构造函数
+				
+				let ul = document.getElementById("list");
+				let ali = ul.getElementsByTagName("li");
+				
+				for (let i=0; i<ali.length; i++) {
+					ali[i].onclick = function(){
+						//把ul移除
+						ul.parentNode.removeChild(ul);
+						
+						//子弹的发射时间间隔
+						myPlane.fireInterval = this.value-0;
+						
+						//初始化并开始游戏
+						gameEngine.init().start();
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main" >
+			<ul id="list">
+				<li value="1000">超级困难</li>
+				<li value="600">非常困难</li>
+				<li value="300">比较困难</li>
+				<li value="100">春哥附体</li>
+			</ul>
+		</div>
+	</body>
+</html>
